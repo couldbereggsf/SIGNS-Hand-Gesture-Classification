@@ -24,11 +24,23 @@ Where:
 * $\alpha$ is the learning rate.
 * $\frac{\partial J}{\partial w}$ is the gradient of the cost function relative to the weights.
 
-## How to Run
+```## How to Run
 1. Open the notebook in [Google Colab](https://colab.research.google.com/).
 2. Run the `!wget` cell provided in the notebook to download the `.h5` datasets into the `/datasets` directory.
 3. Execute the data loading and preprocessing cells.
 4. Run the model training cell.
+
+import os
+
+# Create the directory structure
+os.makedirs('datasets', exist_ok=True)
+
+# Download the raw .h5 files directly to bypass LFS budget issues
+!wget -O datasets/train_signs.h5 https://raw.githubusercontent.com/JudasDie/deeplearning.ai/master/Improving%20Deep%20Neural%20Networks/Week3/datasets/train_signs.h5
+!wget -O datasets/test_signs.h5 https://raw.githubusercontent.com/JudasDie/deeplearning.ai/master/Improving%20Deep%20Neural%20Networks/Week3/datasets/test_signs.h5
+
+```# Verify file sizes (~12MB for train)
+!ls -lh datasets
 
 ## Results
 After 30 epochs, the model achieves high training and validation accuracy, demonstrating effective generalization to unseen hand signals.
